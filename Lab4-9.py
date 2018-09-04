@@ -4,14 +4,14 @@ def main(money, var_k):
     """
     This function will return values of inflation in n year
     """
-    rate = 1 + 0.0381
+    font = int(money * 100)
 
-    if (var_k > 9999):
-        var_k = 1000
-    result = money * (rate ** var_k)
-    precision = int((result - int(result))*money)
-    if (precision >= 10):
-        print(str(int(result)) + "."+ str(precision))
-    else:
-        print(str(int(result)) + ".0"+ str(precision))
-main(float(input()), float(input()))
+    for _ in range(var_k):
+        font = font * 10381
+        font = int(font // 10000)
+
+    back = font % 100
+    font = int(font // 100)
+    print('%d.%02d' %(font, back))
+
+main(float(input()), int(input()))
